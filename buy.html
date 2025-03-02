@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Buy Crypto - Cryptex</title>
+    <link rel="stylesheet" href="./assets/css/newpages.css">
+    <script defer src="buy.js"></script>
+</head>
+<body>
+    <header>
+        <h1>Buy Cryptocurrency</h1>
+    </header>
+
+    <div id="crypto-container">
+        <h2>Live Crypto Prices</h2>
+        <p>Bitcoin (BTC): <span id="btc-price">$0.00</span></p>
+        <p>Ethereum (ETH): <span id="eth-price">$0.00</span></p>
+    </div>
+
+    <form id="buy-form">
+        <label>Select Cryptocurrency:</label>
+        <select id="crypto-select">
+            <option value="btc">Bitcoin (BTC)</option>
+            <option value="eth">Ethereum (ETH)</option>
+        </select>
+
+        <label>Enter Amount (USD):</label>
+        <input type="number" id="amount" required>
+
+        <p>Crypto Equivalent: <span id="crypto-amount">0</span></p>
+        <p>Transaction Fee: <span id="fee">0.5%</span></p>
+
+        <button type="submit">Buy Now</button>
+    </form>
+
+    <p id="response-message"></p>
+
+    <a href="index.html" class="button">Back to Home</a>
+</body>
+</html>

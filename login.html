@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- linking of external url of  css -->
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <!-- linking of internal css -->
+    <link rel="stylesheet" href="./assets/css/login.css">
+    <script src="./login.js"></script>
+    <title>Login - CRYPTEX</title>
+    <!-- <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f0f0f0;
+            margin: 0;
+            font-family: Arial, sans-serif;
+        }
+        .login-container {
+            background: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            animation: fadeIn 1s ease-in-out;
+        }
+        .login-container h2 {
+            margin: 0 0 20px;
+            text-align: center;
+        }
+        .login-container input {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        .login-container button {
+            width: 100%;
+            padding: 10px;
+            background-color: #007bff;
+            border: none;
+            border-radius: 5px;
+            color: #fff;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        .login-container button:hover {
+            background-color: #0056b3;
+        }
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+    </style> -->
+</head>
+<body>
+    <a href="index.html">Go Back to Home</a>
+    <div class="login-container">
+        <!-- Login Form -->
+            <div class="form-box login">
+                <form class="form" action="">  <!--linkig to the login page-->
+                    <h1>Login to CRYPTEX</h1>
+                        <div class="input-box">
+                            <input type="text" placeholder="Username" required>
+                            <i class='bx bxs-user'></i>
+                        </div>
+                        <div class="input-box">
+                            <input type="password" placeholder="Password" required>
+                            <i class='bx bxs-lock-alt' ></i>          
+                        </div>
+                        <div class="forgot-link">
+                            <a href="#">Forgot Password?</a>
+                        </div>
+                        <button class="btn" type="submit">Login</button>
+                        <p> or login with social platforms</p>
+                        <div class="social-icons">
+                            <a href="#" class="icon-circle">
+                                <i class='bx bxl-google' ></i>
+                            </a> 
+                            &nbsp;
+                            <a href="#" class="icon-circle">
+                                <i class='bx bxl-facebook'></i>
+                            </a>
+                            &nbsp;
+                            <a href="#" class="icon-circle">
+                                <i class='bx bxl-twitter'></i>
+                            </a>
+                
+                        </div>
+                </form>
+            </div>
+        
+
+        <!-- Register Form -->
+        <div class="form-box register">
+            <form class="form" action="">  <!--linkig to the login page-->
+                <h1>Create account</h1>
+
+                <div class="input-box">
+                    <input type="text" placeholder="Username" required>
+                    <i class='bx bxs-user'></i>
+                </div>
+
+                <div class="input-box">
+                    <input type="email" placeholder="Email" required>
+                    <i class='bx bxs-envelope' ></i>
+                </div>
+
+                <div class="input-box">
+                    <input type="password" placeholder="Password" required>
+                    <i class='bx bxs-lock-alt' ></i>          
+                </div>
+
+                <!-- <div class="input-box">
+                    <input type="password" placeholder="Confirm Password" required>
+                    <i class='bx bxs-lock-alt' ></i>
+                </div> -->
+
+                <button class="btn" type="submit">Create account</button>
+                <p> Already have an account? <a href="#">Login</a></p>  
+                <p> or Create account with social platforms</p>
+                <div class="social-icons">
+                    <a href="#" class="icon-circle">
+                        <i class='bx bxl-google' ></i>
+                    </a> 
+                    &nbsp;
+                    <a href="#" class="icon-circle">
+                        <i class='bx bxl-facebook'></i>
+                    </a>
+                    &nbsp;
+                    <a href="#" class="icon-circle">
+                        <i class='bx bxl-twitter'></i>
+                    </a>
+                    
+                </div>
+            </form>
+        </div>
+
+        <div class="toggle-box">
+
+            <div class="toggle-panel toggle-left">
+                <h1>Hello, Welcome!</h1>
+                <p>Don't have an account?</p>
+                <button class="btn create-account-btn">Create account</button>
+            </div>
+
+            <div class="toggle-panel toggle-right">
+                <h1>Welcome Back!</h1>
+                <p>Already have an account?</p>
+                <button class="btn login-btn">Login</button>
+            </div>
+
+        </div>
+
+    </div>
+<script src="./login.js"></script>
+</body>
+</html>

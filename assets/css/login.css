@@ -309,7 +309,32 @@ body {
         
     }
 }
+#arrow{
+    padding-top: 10px;
+}
+#back{
+    border: 5px solid cornflowerblue;
+    border-radius: 50%;
+}
 
+.Back {
+    position: relative;
+    /* top: 20px;
+    left: 20px; */
+    /* top: 50%;
+    left: 140px;
+     */
+    color:cornflowerblue;
+   /* transform: translate(-50%, -50%); */
+    padding: 10px;
+    border-radius: 50%;
+    border: cornflowerblue;
+    /* border-color: cornflowerblue; */
+    font-size: 40px;
+    
+    cursor: pointer;
+    
+}
     /* .login-container.active .form-box {
         right: 0;
         bottom: 30%;

@@ -8,6 +8,9 @@ class User(UserMixin, db.Model):
     password_hash = db.Column(db.String(255), nullable=False)
     created_at = db.Column(db.DateTime, server_default=db.func.current_timestamp())
 
+    def __repr__(self):
+        return f"User('{self.username}', '{self.email}')"
+
 class Transaction(db.Model):
     id = db.Column(db.Integer, primary_key=True, autoincrement=True)
     user_id = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=False)

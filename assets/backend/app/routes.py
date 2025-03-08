@@ -18,7 +18,11 @@ from app.forms import LoginForm, RegisterForm
 
 main = Blueprint('main', __name__)
 
-@main.route("/register", methods=["GET", "POST"])
+@main.route("/")
+def home():
+    return render_template("index.html")
+
+@main.route("/login.html", methods=["GET", "POST"])
 def register():
     form = RegisterForm()
     if form.validate_on_submit():
@@ -28,25 +32,25 @@ def register():
             db.session.add(new_user)
             db.session.commit()
             flash("Registration successful! Please log in.", "success")
-            return redirect(url_for("main.login"))
+            return redirect("login.html")
         except Exception as e:
             db.session.rollback()
             flash(f"An error occurred: {str(e)}", "danger")
-    return render_template("register.html", form=form)
+    return render_template("login.html", form=form)
 
-@main.route("/login", methods=["GET", "POST"])
+@main.route("/login.html", methods=["GET", "POST"])
 def login():
     form = LoginForm()
     if form.validate_on_submit():
         user = User.query.filter_by(email=form.email.data).first()
         if user and check_password_hash(user.password, form.password.data):
             login_user(user)
-            return redirect(url_for("main.dashboard"))
+            return redirect("login.html")
         flash("Invalid credentials", "danger")
-    return render_template("login.html", form=form)
+    return render_template("index.html", form=form)
 
 @main.route("/logout")
 @login_required
 def logout():
     logout_user()
-    return redirect(url_for("main.login"))
+    return redirect(url_for("login.html"))

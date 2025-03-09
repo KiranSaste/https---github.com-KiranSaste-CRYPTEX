@@ -18,6 +18,9 @@
       <link rel="preconnect" href="https://fonts.googleapis.com">
       <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
       <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+     <!-- jquery cdn link for live price api  -->
+     <script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
+    
     </head>
 <body>
 
@@ -25,7 +28,7 @@
 
     <header class="header" data-header>
         <div class="container">
-            <a href="#" class="logo">
+            <a href="index.html" class="logo">
                 <img src="../static/images/logo.svg" width="32" height="32" alt="Cryptex logo">
                 Cryptex
             </a>
@@ -127,7 +130,7 @@
                             <button class="tab-btn">Metaverse</button>
                         </li>
                         <li>
-                            <button class="tab-btn">Polkadot/button>
+                            <button class="tab-btn">Polkadot</button>
                         </li>
                         <li>
                             <button class="tab-btn">XRP</button>
@@ -140,8 +143,9 @@
                         </li>
                         
                     </ul>
+                <!-- Sample trande  -->
+                     <ul class="tab-content">
             
-                    <ul class="tab-content">
                         <li>
                             <div class="trend-card">
                                 <div class="card-title-wrapper">
@@ -151,15 +155,12 @@
                                     </a>
                                 </div>
 
-                                <data  class="card-value" value="97327.72">USD 97,327.72</data>
+                                <data class="card-value" value="97327.72"><span id="bitcoinchange"></data>
                                 <div class="card-analytics">
-                                    <data class="current-price" value="96,787.80">96,787.80</data>
+                                    <data class="current-price" value="96,787.80"><span id="bitcoinvalue"></span></data>
                                     <div class="badge-red">-1.15%</div>
-                            
-
                                 </div>
-
-
+                               
                             </div>
                         </li>
                         <li>
@@ -171,9 +172,9 @@
                                     </a>
                                 </div>
 
-                                <data  class="card-value" value="2704.71">USD 2,704.71</data>
+                                <data  class="card-value" value="2704.71"><span id="ethereumchange"></data>
                                 <div class="card-analytics">
-                                    <data class="current-price" value=" 2698.47"> 2,698.47</data>
+                                    <data class="current-price" value=" 2698.47"><span id="ethereumvalue"></span></data>
                                     <div class="badge-red">-0.90%</div>
                             
 
@@ -193,9 +194,9 @@
                                     </a>
                                 </div>
 
-                                <data  class="card-value" value="1.00">USD 1.00</data>
+                                <data  class="card-value" value="1.00"><span id="tetherchange"></data>
                                 <div class="card-analytics">
-                                    <data class="current-price" value="1.00">1.00</data>
+                                    <data class="current-price" value="1.00"><span id="tethervalue"></span></data>
                                     <div class="badge-red">-0.01%</div>
                             
 
@@ -214,9 +215,9 @@
                                     </a>
                                 </div>
 
-                                <data  class="card-value" value="443.56">USD 443.56</data>
+                                <data  class="card-value" value="443.56"><span id="bndchange"></span></data>
                                 <div class="card-analytics">
-                                    <data class="current-price" value="96,787.80">96,787.80</data>
+                                    <data class="current-price" value="96,787.80"><span id="bnbvalue"></span></data>
                                     <div class="badge-red">-1.24%</div>
                             
 
@@ -226,7 +227,43 @@
                             </div>
                         </li>
 
-                    </ul>
+                    </ul> 
+                    
+                    <!-- For live market -->
+                    <!-- <ul class="tab-content">
+                        <li>
+                            <div class="trend-card">
+                                <div class="card-title-wrapper">
+                                    <img src="../static/images/coin-1.svg" width="24" height="24" alt="bitcoin logo">
+                                    <a href="https://www.binance.us/buy-sell-crypto" class="card-title" target="_blank">
+                                        Bitcoin <span class="span">BTC/USD</span>
+                                    </a>
+                                </div>
+                                <data class="card-value"><span id="bitcoinchange">Loading...</span></data>
+                                <div class="card-analytics">
+                                    <data class="current-price"><span id="bitcoinvalue">Loading...</span></data>
+                                    <div class="badge-red" id="bitcoinchange">-</div>
+                                </div>
+                            </div>
+                        </li>
+                    
+                        <li>
+                            <div class="trend-card">
+                                <div class="card-title-wrapper">
+                                    <img src="../static/images/coin-2.svg" width="24" height="24" alt="ethereum logo">
+                                    <a href="https://www.binance.us/buy-sell-crypto" class="card-title" target="_blank">
+                                        Ethereum <span class="span">ETH/USD</span>
+                                    </a>
+                                </div>
+                                <data class="card-value"><span id="ethereumchange">Loading...</span></data>
+                                <div class="card-analytics">
+                                    <data class="current-price"><span id="ethereumvalue">Loading...</span></data>
+                                    <div class="badge-red" id="ethereumchange">-</div>
+                                </div>
+                            </div>
+                        </li>
+                    </ul> -->
+                    
                 </div>
             </div>
         
@@ -301,10 +338,12 @@
 
                             </thead>
 
-                            <tbody class="table-body">
+                          <tbody class="table-body">
+                        
+                     <!-- For the sample dashboard table  -->
                                 <!-- row 1 -->
                                 <tr class="table-row">
-
+                                
                                     <td class="table-data">
                                         <button class="add-to-fav" aria-label="Add to favourite" data-add-to-fav>
                                             
@@ -321,16 +360,16 @@
                                             <img src="../static/images/coin-1.svg" width="20" height="20" alt="Bitcoin logo" class="img">
 
                                             <h3>
-                                                <a href="#" class="coin-name">Bitcoin <span class="span">BTC</span></a>
+                                                <a href="https://www.binance.us/buy-sell-crypto/btc" class="coin-name">Bitcoin <span class="span">BTC</span></a>
                                             </h3>
                                         </div>
                                     </td>
 
-                                    <td class="table-data last-price">$56,623.54</td>
+                                    <td class="table-data last-price">Loading..</td>
 
-                                    <td class="table-data last-update-green">+1.45%</td>
+                                    <td class="table-data last-update-green">Loading..</td>
 
-                                   <td class="table-data market-cap">$880,423,640,582</td>
+                                   <td class="table-data market-cap">Loading..</td>
 
                                    <td class="table-data">
                                     <img src="../static/images/chart-1.svg" width="100" height="40" alt="profit chart" class="chart">
@@ -340,9 +379,9 @@
                                     <button class="btn btn-outline">Trade</button>
                                    </td>
 
-                                </tr>
+                                </tr> 
                                 <!-- row 2 -->
-                                <tr class="table-row">
+                                 <tr class="table-row">
 
                                     <td class="table-data">
                                         <button class="add-to-fav" aria-label="Add to favourite" data-add-to-fav>
@@ -365,11 +404,11 @@
                                         </div>
                                     </td>
 
-                                    <td class="table-data last-price">$56,623.54</td>
+                                    <td class="table-data last-price">Loading..</td>
 
-                                    <td class="table-data last-update-red">-5.12%</td>
+                                    <td class="table-data last-update-red">Loading..</td>
 
-                                   <td class="table-data market-cap">$880,423,640,582</td>
+                                   <td class="table-data market-cap">Loading..</td>
 
                                    <td class="table-data">
                                     <img src="../static/images/chart-2.svg" width="100" height="40" alt="loss chart" class="chart">
@@ -379,9 +418,9 @@
                                     <button class="btn btn-outline">Trade</button>
                                    </td>
 
-                                </tr>
+                                </tr> 
                                 <!-- row 3 -->
-                                <tr class="table-row">
+                                 <tr class="table-row">
 
                                     <td class="table-data">
                                         <button class="add-to-fav" aria-label="Add to favourite" data-add-to-fav>
@@ -404,11 +443,11 @@
                                         </div>
                                     </td>
 
-                                    <td class="table-data last-price">$56,623.54</td>
+                                    <td class="table-data last-price">Loading..</td>
 
-                                    <td class="table-data last-update-green">+1.45%</td>
+                                    <td class="table-data last-update-green">Loading..</td>
 
-                                   <td class="table-data market-cap">$880,423,640,582</td>
+                                   <td class="table-data market-cap">Loading..</td>
 
                                    <td class="table-data">
                                     <img src="../static/images/chart-1.svg" width="100" height="40" alt="profit chart" class="chart">
@@ -418,10 +457,10 @@
                                     <button class="btn btn-outline">Trade</button>
                                    </td>
 
-                                </tr>   
+                                </tr>    
 
                                 <!-- row 4 -->
-                                <tr class="table-row">
+                                 <tr class="table-row">
 
                                     <td class="table-data">
                                         <button class="add-to-fav" aria-label="Add to favourite" data-add-to-fav>
@@ -444,11 +483,11 @@
                                         </div>
                                     </td>
 
-                                    <td class="table-data last-price">$56,623.54</td>
+                                    <td class="table-data last-price">Loading..</td>
 
-                                    <td class="table-data last-update-red">-3.75%</td>
+                                    <td class="table-data last-update-red">Loading..</td>
 
-                                   <td class="table-data market-cap">$880,423,640,582</td>
+                                   <td class="table-data market-cap">Loading..</td>
 
                                    <td class="table-data">
                                     <img src="../static/images/chart-2.svg" width="100" height="40" alt="loss chart" class="chart">
@@ -458,10 +497,10 @@
                                     <button class="btn btn-outline">Trade</button>
                                    </td>
 
-                                </tr> 
+                                </tr>  
 
                                 <!-- row 5 -->
-                                <tr class="table-row">
+                                 <tr class="table-row">
 
                                     <td class="table-data">
                                         <button class="add-to-fav" aria-label="Add to favourite" data-add-to-fav>
@@ -484,11 +523,11 @@
                                         </div>
                                     </td>
 
-                                    <td class="table-data last-price">$56,623.54</td>
+                                    <td class="table-data last-price">Loading..</td>
 
-                                    <td class="table-data last-update-green">+1.45%</td>
+                                    <td class="table-data last-update-green">Loading..</td>
 
-                                   <td class="table-data market-cap">$880,423,640,582</td>
+                                   <td class="table-data market-cap">Loading..</td>
 
                                    <td class="table-data">
                                     <img src="../static/images/chart-1.svg" width="100" height="40" alt="profit chart" class="chart">
@@ -498,10 +537,10 @@
                                     <button class="btn btn-outline">Trade</button>
                                    </td>
 
-                                </tr> 
+                                </tr>  
 
                                 <!-- row 6 -->
-                                <tr class="table-row">
+                                 <tr class="table-row">
 
                                     <td class="table-data">
                                         <button class="add-to-fav" aria-label="Add to favourite" data-add-to-fav>
@@ -524,11 +563,11 @@
                                         </div>
                                     </td>
 
-                                    <td class="table-data last-price">$56,623.54</td>
+                                    <td class="table-data last-price">Loading..</td>
 
-                                    <td class="table-data last-update-red">-2.22%</td>
+                                    <td class="table-data last-update-red">Loading..</td>
 
-                                   <td class="table-data market-cap">$880,423,640,582</td>
+                                   <td class="table-data market-cap">Loading..</td>
 
                                    <td class="table-data">
                                     <img src="../static/images/chart-2.svg" width="100" height="40" alt="loss chart" class="chart">
@@ -538,10 +577,10 @@
                                     <button class="btn btn-outline">Trade</button>
                                    </td>
 
-                                </tr>
+                                </tr> 
 
                                 <!-- row 7 -->
-                                <tr class="table-row">
+                                <!-- <tr class="table-row">
 
                                     <td class="table-data">
                                         <button class="add-to-fav" aria-label="Add to favourite" data-add-to-fav>
@@ -578,10 +617,10 @@
                                     <button class="btn btn-outline">Trade</button>
                                    </td>
 
-                                </tr>
+                                </tr> -->
 
                                 <!-- row 8 -->
-                                <tr class="table-row">
+                                <!-- <tr class="table-row">
 
                                     <td class="table-data">
                                         <button class="add-to-fav" aria-label="Add to favourite" data-add-to-fav>
@@ -618,13 +657,14 @@
                                     <button class="btn btn-outline">Trade</button>
                                    </td>
 
-                                </tr>
+                                </tr> -->
 
 
 
 
-                            </tbody>
-
+                            </tbody> 
+ 
+                             
 
                         </table>
 

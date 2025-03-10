@@ -11,6 +11,7 @@ from .config import Config
 db = SQLAlchemy()
 migrate = Migrate()
 login_manager = LoginManager()
+login_manager.login_view = 'main.login'  # Redirects unauthorized users to the login page
 
 def create_app():
     app = Flask(__name__)
@@ -21,8 +22,11 @@ def create_app():
     
     login_manager.init_app(app)
 
-# Import routes inside the function to avoid circular imports
+    # with app.app_context():
+    #     from app import routes
 
+# Import routes inside the function to avoid circular imports
+    from app import routes  # Import routes after initializing Flask app
     from app.routes import main
     app.register_blueprint(main)
 

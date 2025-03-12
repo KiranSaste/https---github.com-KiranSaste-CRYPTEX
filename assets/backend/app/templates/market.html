@@ -3,15 +3,44 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Markets - Cryptex</title>
-    <!-- custom css link -->
-    <link rel="stylesheet" href="./assets/css/newpages.css">
+    <title>Market | Cryptex</title>
+    <link rel="stylesheet" href="../static/css/market.css">
+    <script defer src="../static/scripts/market.js"></script>
 </head>
 <body>
-    <header>
-        <h1>Markets</h1>
-    </header>
-    <p>Explore live cryptocurrency market trends and insights.</p>
-    <a href="index.html">Go Back to Home</a>
+
+    <!-- Navbar -->
+    <nav class="navbar">
+        <div class="logo">Cryptex</div>
+        <ul class="nav-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="market.html" class="active">Market</a></li>
+            <li><a href="trade.html">Trade</a></li>
+            <li><a href="portfolio.html">Portfolio</a></li>
+            <li><a href="login.html">Login</a></li>
+        </ul>
+    </nav>
+
+    <!-- Market Table -->
+    <div class="market-container">
+        <h1>Live Crypto Market</h1>
+        <input type="text" id="search-bar" placeholder="Search Cryptocurrency...">
+        <table>
+            <thead>
+                <tr>
+                    <th>#</th>
+                    <th>Name</th>
+                    <th>Price</th>
+                    <th>24h %</th>
+                    <th>Market Cap</th>
+                    <th>Trade</th>
+                </tr>
+            </thead>
+            <tbody id="market-data">
+                <!-- Data will be inserted here dynamically -->
+            </tbody>
+        </table>
+    </div>
+
 </body>
 </html>

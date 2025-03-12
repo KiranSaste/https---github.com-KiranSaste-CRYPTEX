@@ -6,12 +6,12 @@ from flask_login import LoginManager
 from .config import Config
 
 # from app import create_app, db
-
 # app = create_app()
+
 db = SQLAlchemy()
 migrate = Migrate()
 login_manager = LoginManager()
-login_manager.login_view = 'main.login'  # Redirects unauthorized users to the login page
+login_manager.login_view = 'main.login' # Redirects unauthorized users to the login page
 
 def create_app():
     app = Flask(__name__)
@@ -24,6 +24,9 @@ def create_app():
 
     # with app.app_context():
     #     from app import routes
+    with app.app_context():
+        db.create_all()
+
 
 # Import routes inside the function to avoid circular imports
     from app import routes  # Import routes after initializing Flask app
@@ -31,3 +34,9 @@ def create_app():
     app.register_blueprint(main)
 
     return app
+
+
+
+
+
+

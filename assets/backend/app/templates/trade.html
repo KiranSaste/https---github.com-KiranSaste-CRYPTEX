@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trade - Cryptex</title>
+    <link rel="stylesheet" href="../static/css/trade.css">
+    <script src="../static/scripts/trade.js" defer></script>
+</head>
+<body>
+    <header>
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="market.html">Market</a></li>
+                <li><a href="trade.html" class="active">Trade</a></li>
+                <li><a href="wallet.html">Wallet</a></li>
+                <li><a href="profile.html">Profile</a></li>
+            </ul>
+        </nav>
+    </header>
+    
+    <main>
+        <section class="trade-container">
+            <div class="order-book">
+                <h2>Order Book</h2>
+                <ul id="order-list"></ul>
+            </div>
+            
+            <div class="trade-chart">
+                <h2>Live Chart</h2>
+                <canvas id="tradeChart"></canvas>
+            </div>
+            
+            <div class="trade-form">
+                <h2>Place Order</h2>
+                <form id="order-form">
+                    <label for="order-type">Order Type:</label>
+                    <select id="order-type">
+                        <option value="buy">Buy</option>
+                        <option value="sell">Sell</option>
+                    </select>
+                    <label for="amount">Amount:</label>
+                    <input type="number" id="amount" placeholder="Enter amount">
+                    <label for="quantity">Quantity:</label>
+                    <input type="number" id="quantity" placeholder="Enter quantity">
+                    <button type="submit">Submit Order</button>
+                </form>
+            </div>
+        </section>
+    </main>
+</body>
+</html>

@@ -1,0 +1,385 @@
+
+<!DOCTYPE html>
+<html lang="en" translate="no" class="notranslate">
+
+<head>
+	<meta charset="utf-8">
+	<meta name="google" content="notranslate" />
+	<meta name="viewport"
+		content="width=device-width, initial-scale=1, shrink-to-fit=no, maximum-scale=3, viewport-fit=cover">
+	<meta name="theme-color" content="#401a63">
+	<meta name="description"
+		content="Convert your BTC to inr. Get the best Bitcoin Price in India. Buy and sell Bitcoin in inr with features like fast KYC verification, fast deposits and withdrawal with 24/7 support">
+	<!--
+      manifest.json provides metadata used when your web app is added to the
+      homescreen on Android. See https://developers.google.com/web/fundamentals/engage-and-retain/web-app-manifest/
+	-->
+	<link rel="manifest" href="./manifest.json">
+	<link rel="shortcut icon" href="../static/images/logo.svg">
+	<link rel="apple-touch-icon" href="https://bitbns.com/assets/img/logos/bns-256.png">
+	<link rel="preload" as="image" href="https://bitbns.com/assets/img/bbAnn__placeholder.png" />
+
+	<link rel="canonical" data-react-helmet="true" href="https://bitbns.com/trade/">
+	<script defer src="./chart-shit/datafeeds/udf/dist/bundle.js"></script>
+	<script src="./js/geetest.js"></script>
+
+	<link rel="preconnect" href="https://www.geetest.com" crossorigin />
+	<link rel="preconnect" href="https://static.geetest.com" crossorigin />
+	<link rel="preconnect" href="https://apiv6.geetest.com" crossorigin />
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link rel="preconnect" href="https://www.googletagmanager.com" crossorigin>
+	<link rel="preconnect" href="https://s3-ap-southeast-1.amazonaws.com" crossorigin>
+	<link rel="preconnect" href="https://apis.google.com" crossorigin>
+	<link rel="preconnect" href="https://www.googleadservices.com" crossorigin>
+	<link rel="preconnect" href="https://googleads.g.doubleclick.net" crossorigin>
+	<link rel="preconnect" href="https://bibns-54841.firebaseio.com" crossorigin>
+	<link rel="preconnect" href="https://google-analytics.com" crossorigin>
+	<link rel="preconnect" href="https://connect.facebook.net" crossorigin>
+	<link rel="preconnect" href="https://www.clarity.ms" crossorigin>
+	<link rel="preconnect" href="https://widget.freshworks.com" crossorigin>
+
+	
+	<script async>
+		async function setDefaultCountryFromIp() {
+			try {
+				const data = await fetch('https://bitbns.com/order/getMyIPDetails').then((res) =>
+					res.json()
+				);
+
+				if (data?.countryCode) {
+					window.localStorage.setItem(
+						'selectedCountry',
+						data.countryCode.toLowerCase()
+					);
+				}
+			} catch (error) {
+				console.log('countryCode', error);
+			}
+		}
+
+		const countryFromSearch = new URLSearchParams(window.location.search).get(
+			'country'
+		);
+		const countryFromLS = window.localStorage.getItem('selectedCountry');
+
+		if (!countryFromLS) {
+			if ('in' !== 'in' && 'bitbns' !== 'bitbns') {
+				window.localStorage.setItem(
+					'selectedCountry',
+					'in'
+				);
+			} else if (countryFromSearch) {
+				window.localStorage.setItem('selectedCountry', countryFromSearch);
+			} else {
+				setDefaultCountryFromIp();
+			}
+		}
+
+	</script>
+
+	<!--
+      Notice the use of %PUBLIC_URL% in the tags above.
+      It will be replaced with the URL of the `public` folder during the build.
+      Only files inside the `public` folder can be referenced from the HTML.
+
+      Unlike "/favicon.ico" or "favicon.ico", "/trade/favicon.ico" will
+      work correctly both with client-side routing and a non-root public URL.
+      Learn how to configure a non-root public URL by running `npm run build`.
+    -->
+	<title>1 BTC to inr: Bitcoin Price in India
+	</title>
+	<!-- <script src="https://wchat.freshchat.com/js/widget.js"></script> -->
+	<!-- Google Tag Manager -->
+	<script>
+		// (function (w, d, s, l, i) {
+		// 	w[l] = w[l] || [];
+		// 	w[l].push({
+		// 		'gtm.start': new Date().getTime(),
+		// 		event: 'gtm.js'
+		// 	});
+		// 	var f = d.getElementsByTagName(s)[0],
+		// 		j = d.createElement(s),
+		// 		dl = l != 'dataLayer' ? '&l=' + l : '';
+		// 	j.async = true;
+		// 	j.src =
+		// 		'https://www.googletagmanager.com/gtm.js?id=' + i + dl;
+		// 	f.parentNode.insertBefore(j, f);
+		// })(window, document, 'script', 'dataLayer', 'GTM-KKMM7BD');
+		// before React is loaded
+		if ('undefined' !== 'true' && typeof window.__REACT_DEVTOOLS_GLOBAL_HOOK__ === 'object') {
+			__REACT_DEVTOOLS_GLOBAL_HOOK__.inject = function () { };
+		}
+	</script>
+
+	<!-- Taboola Pixel Code -->
+	<script type='text/javascript'>
+		window._tfa = window._tfa || [];
+		!function (t, f, a, x) {
+			if (!document.getElementById(x)) {
+				t.async = 1; t.src = a; t.id = x; f.parentNode.insertBefore(t, f);
+			}
+		}(document.createElement('script'),
+			document.getElementsByTagName('script')[0],
+			'//cdn.taboola.com/libtrc/unip/1391168/tfa.js',
+			'tb_tfa_script');
+	</script>
+	<!-- End of Taboola Pixel Code -->
+
+	<!-- <script>
+		!function (e, s, t, i, p, c, n) {
+			e.hspixel || ((p = e.hspixel = function () {
+				p.process ?
+					p.process.apply(p, arguments) : p.queue.push(arguments)
+			}).queue = [],
+				p.t = 1 * new Date, (c = s.createElement("script")).async = 1,
+				c.src = "https://hspx.hotstar.com/static/pixel/hspixel.js",
+				(n = s.getElementsByTagName("script")[0]).parentNode.insertBefore(c, n)
+			)
+		}(window, document);
+	</script> -->
+
+	<!-- Clarity code -->
+	<script type="text/javascript">
+		if ("fmu4b67v7a" !== '' && ('undefined' !== 'true')) {
+			(function (c, l, a, r, i, t, y) {
+				c[a] = c[a] || function () { (c[a].q = c[a].q || []).push(arguments) };
+				t = l.createElement(r); t.async = 1; t.src = "https://www.clarity.ms/tag/" + i;
+				y = l.getElementsByTagName(r)[0]; y.parentNode.insertBefore(t, y);
+			})(window, document, "clarity", "script", "fmu4b67v7a");
+		}
+	</script>
+
+	<!-- Facebook Pixel Code -->
+	<script>
+		!function (f, b, e, v, n, t, s) {
+			if (f.fbq) return; n = f.fbq = function () {
+				n.callMethod ?
+					n.callMethod.apply(n, arguments) : n.queue.push(arguments)
+			};
+			if (!f._fbq) f._fbq = n; n.push = n; n.loaded = !0; n.version = '2.0';
+			n.queue = []; t = b.createElement(e); t.async = !0;
+			t.src = v; s = b.getElementsByTagName(e)[0];
+			s.parentNode.insertBefore(t, s)
+		}(window, document, 'script',
+			'https://connect.facebook.net/en_US/fbevents.js');
+		fbq('init', '220183086943487');
+		// fbq('track', 'PageView');
+	</script>
+	<noscript><img height="1" width="1" style="display:none"
+			src="https://www.facebook.com/tr?id=220183086943487&ev=PageView&noscript=1" /></noscript>
+	<!-- End Facebook Pixel Code -->
+  <script type="module" crossorigin src="/trade/assets/index.f2a39a2b.js"></script>
+  <link rel="stylesheet" href="/trade/assets/index.d1e5e852.css">
+</head>
+
+<body>
+	<!-- Google Tag Manager (noscript) -->
+	<noscript>
+		<iframe src="https://www.googletagmanager.com/ns.html?id=GTM-KKMM7BD" height="0" width="0"
+			style="display:none;visibility:hidden"></iframe>
+	</noscript>
+	<!-- End Google Tag Manager (noscript) -->
+	<noscript>
+		<p style="text-align: center; color:white;">You need to enable JavaScript to run this app.</p>
+	</noscript>
+
+	<style>body{background:#401a63}#firebaseui-auth-container .firebaseui-container{max-width:none}@keyframes chatLabelIn{0%{opacity:0;transform:translateX(120%)}75%{opacity:0}90%{opacity:.5}to{opacity:1;transform:translateX(-140px)}}.bb-preload-container{color:#fff;font-family:Fira Sans,-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Helvetica Neue,Arial,Noto Sans,sans-serif;line-height:1.55;margin:auto;max-width:1280px;padding:15px}#bb-preload-heading{background:#401a63;height:100%;left:0;position:fixed;top:0;width:100%;z-index:100000}#bb-preload-heading,#bb-preload-icon{align-items:center;display:flex;flex-direction:column;justify-content:center}#bb-preload-icon{gap:30px;transform:translateY(-100%)}#bb-preload-body{color:#8708d7;font-size:14px;font-weight:400;height:0;margin:auto;overflow:hidden;padding:20px 15px}#bb-preload-body a{color:#8708d7}#bb-preload-body h1,#bb-preload-body h2,#bb-preload-body h3{font-size:16px;font-weight:700;margin:10px 0}#bb-preload-body p{font-size:14px;margin-bottom:15px}.bb-preload-footer{grid-gap:30px 15px;display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr))}.bb-preload-footer .bb-preload-footer-header{color:#d9d4ed;font-size:16px;letter-spacing:.08em;margin-bottom:5px;margin-top:25px}.bb-preload-footer .bb-preload-footer-content a{color:hsla(0,0%,100%,.5)!important;display:block;flex-basis:calc(50% - 10px);flex-grow:0;flex-shrink:0;margin:10px 0;text-decoration:none}.grecaptcha-badge{display:none!important}.bb-initLoader{border-radius:10px;margin:0 auto;padding:1px;position:relative;width:150px}.bb-initLoader:before{background-color:#360457;border-radius:10px;bottom:-4px;content:"";left:-4px;position:absolute;right:-4px;top:-4px}.bb-initLoader .bb-initLoaderBar{animation:borealisBar 2s linear infinite;background:#6000b1;border-radius:10px;bottom:0;height:6px;left:0;position:absolute;right:100%;top:-2px;width:0}#freshworks-container{z-index:100!important}@keyframes borealisBar{0%{left:0;right:100%;width:0}10%{left:0;right:75%;width:25%}90%{left:75%;right:0;width:25%}to{left:100%;right:0;width:0}}@media (max-width:768px){#freshworks-container{display:none}}</style>
+
+	<div id="main-container" class="z-1">
+		<div class="bb-preload-container">
+			<div id="bb-preload-heading">
+				<div id="bb-preload-icon">
+					<svg width="72" height="72" viewBox="0 0 72 72" fill="none" xmlns="http://www.w3.org/2000/svg">
+						<rect x="6" y="6" width="60" height="60" rx="30" fill="#9B2AD6" />
+						<path
+							d="M48.9722 45.7773C48.9722 43.7854 50.536 42.481 52.4977 42.481C54.4593 42.481 56.0231 43.7854 56.0231 45.7773C56.0231 47.7692 54.4619 49.1441 52.4977 49.1441C50.5335 49.1441 48.9722 47.7339 48.9722 45.7773Z"
+							fill="#FF8500" />
+						<path
+							d="M48.0377 37.6888C48.0377 44.843 42.7948 49.4135 36.0309 49.4135C32.805 49.4135 30.2063 48.4415 28.4586 46.4521V49.0761H22.6667V17.6665H28.7784V28.7164C30.5689 26.8529 33.0342 25.964 36.0359 25.964C42.7948 25.964 48.0377 30.5371 48.0377 37.6888ZM42.3843 37.6888C42.3843 33.7503 39.7402 31.3807 36.2449 31.3807C32.7496 31.3807 30.108 33.7503 30.108 37.6888C30.108 41.6272 32.7522 43.9969 36.2449 43.9969C39.7377 43.9969 42.3843 41.6272 42.3843 37.6888Z"
+							fill="white" />
+					</svg>
+
+					<div class="bb-initLoader">
+						<div class="bb-initLoaderBar"></div>
+					</div>
+				</div>
+			</div>
+
+		</div>
+
+	</div>
+	<div id="modal-container"></div>
+	<div id="toast-container"></div>
+	<div id="tooltip-container"></div>
+
+	<!--
+      This HTML file is a template.
+      If you open it directly in the browser, you will see an empty page.
+
+      You can add webfonts, meta tags, or analytics to this file.
+      The build step will place the bundled scripts into the <body> tag.
+
+      To begin the development, run `npm start` or `yarn start`.
+      To create a production bundle, use `npm run build` or `yarn build`.
+	-->
+	<!-- <script async src="https://www.googletagmanager.com/gtag/js?id=UA-110186270-1"></script>
+	<script>
+		window.dataLayer = window.dataLayer || [];
+
+		function gtag() {
+			dataLayer.push(arguments);
+		}
+		gtag('js', new Date());
+
+		gtag('config', 'UA-110186270-1');
+	</script> -->
+	<script type="text/javascript">
+		function checkURL() {
+			if (window.location.href.split("www").length > 1) {
+				var new_url = window.location.href;
+				new_url = new_url.split("www.bitbns.com");
+				if (new_url.length > 1) {
+					new_url = new_url.join("bitbns.com");
+					window.location.href = new_url;
+				}
+			}
+		}
+
+		checkURL();
+	</script>
+	<script type='text/javascript'>
+		if ('undefined' !== 'true') {
+			/* <![CDATA[ */
+			var google_conversion_id = 816276050;
+			var google_custom_params = window.google_tag_params;
+			var google_remarketing_only = true;
+			/* ]]> */
+
+		}
+	</script>
+
+	<script type="text/javascript" defer src="//www.googleadservices.com/pagead/conversion.js">
+	</script>
+	<noscript>
+		<div style="display:inline;">
+			<img height="1" width="1" style="border-style:none;" alt=""
+				src="//googleads.g.doubleclick.net/pagead/viewthroughconversion/816276050/?guid=ON&amp;script=0" />
+		</div>
+	</noscript>
+	<script type="text/javascript" defer src="https://www.googleadservices.com/pagead/conversion_async.js" async>
+	</script>
+	<svg xmlns="http://www.w3.org/2000/svg" style="
+			position: absolute;
+			width: 0;
+			height: 0;
+			display: none;
+		" aria-hidden="true">
+		<symbol id="symbol-upload" viewBox="0 0 64 64">
+			<radialGradient id="symbol-upload__gradient-a" cx="31.5" cy="32.5" r="31" gradientUnits="userSpaceOnUse"
+				spreadMethod="reflect">
+				<stop offset="0" stop-color="#f4e09d" />
+				<stop offset=".2" stop-color="#f8e8b5" />
+				<stop offset=".5" stop-color="#fcf0cd" />
+				<stop offset=".8" stop-color="#fef4dc" />
+				<stop offset="1" stop-color="#fff6e1" />
+			</radialGradient>
+			<path fill="inherit"
+				d="M53 49a4 4 0 01-4 4h-3.5c-1.4 0-2.5 1.1-2.5 2.5s1.1 2.5 2.5 2.5h3c1.4 0 2.5 1.1 2.5 2.5S49.9 63 48.5 63h-33c-1.4 0-2.5-1.1-2.5-2.5s1.1-2.5 2.5-2.5h3c1.4 0 2.5-1.1 2.5-2.5S19.9 53 18.5 53H11c-2.2 0-4-1.8-4-4s1.8-4 4-4h3.5c1.4 0 2.5-1.1 2.5-2.5S15.9 40 14.5 40H5c-2.2 0-4-1.8-4-4s1.8-4 4-4h2.5c1.4 0 2.5-1.1 2.5-2.5S8.9 27 7.5 27h-3C2 27 0 25 0 22.5S2 18 4.5 18h7c1.4 0 2.5-1.1 2.5-2.5S12.9 13 11.5 13h-4C4.5 13 2 10.5 2 7.5S4.5 2 7.5 2h50c3 0 5.5 2.5 5.5 5.5S60.5 13 57.5 13h-6c-1.4 0-2.5 1.1-2.5 2.5s1.1 2.5 2.5 2.5h3c2.5 0 4.5 2 4.5 4.5S57 27 54.5 27c-1.4 0-2.5 1.1-2.5 2.5s1.1 2.5 2.5 2.5H58c2.2 0 4 1.8 4 4s-1.8 4-4 4h-9.5c-1.4 0-2.5 1.1-2.5 2.5s1.1 2.5 2.5 2.5h.5a4 4 0 014 4zm6-4c-2.2 0-4 1.8-4 4s1.8 4 4 4 4-1.8 4-4-1.8-4-4-4z" />
+			<!-- <linearGradient id="symbol-upload__gradient-b" x1="32" x2="32" y1="6" y2="57" gradientUnits="userSpaceOnUse"
+				spreadMethod="reflect">
+				<stop offset="0" stop-color="#42d778" />
+				<stop offset=".4" stop-color="#3dca76" />
+				<stop offset="1" stop-color="#34b171" />
+			</linearGradient> -->
+			<path fill="currentColor"
+				d="M10 8.5C10 7.1 11.1 6 12.5 6h39C52.9 6 54 7.1 54 8.5S52.9 11 51.5 11h-39A2.5 2.5 0 0110 8.5zM35.5 44h-7c-1.4 0-2.5 1.1-2.5 2.5s1.1 2.5 2.5 2.5h7c1.4 0 2.5-1.1 2.5-2.5S36.9 44 35.5 44zm0 8h-7c-1.4 0-2.5 1.1-2.5 2.5s1.1 2.5 2.5 2.5h7c1.4 0 2.5-1.1 2.5-2.5S36.9 52 35.5 52zm-1-37a3.4 3.4 0 00-5 0L18.8 26c-1.5 1.6-.4 4 1.8 4H26v8.5c0 1.4 1.1 2.5 2.5 2.5h7c1.4 0 2.5-1.1 2.5-2.5V30h5.5c2.2 0 3.3-2.4 1.8-4L34.4 15z" />
+		</symbol>
+		<symbol id="symbol-video-camcorder" viewBox="0 0 24 24">
+			<path
+				d="M10 14H6v-2h4v2zm10-1.6v3.1L17.3 14l2.7-1.6M22 9l-7 4v2l7 4V9zm-1.5-5H17v3h3.5c.8 0 1.5-.7 1.5-1.5S21.3 4 20.5 4zM13 4H9.5a2 2 0 00-1.6.8L6.3 7h2.5l.8-1H13v1h2V6a2 2 0 00-2-2z" />
+			<path d="M15 20H4a2 2 0 01-2-2v-8c0-1.1.9-2 2-2h11a2 2 0 012 2v8a2 2 0 01-2 2zm0-2v1-1zM4 10v8h11v-8H4z" />
+			<path d="M15 13v2l7 4V9z" opacity=".3" />
+			<path d="M15 19H4c-.6 0-1-.4-1-1v-8c0-.6.4-1 1-1h11c.6 0 1 .4 1 1v8c0 .6-.4 1-1 1z" opacity=".3" />
+
+		</symbol>
+		<symbol id="symbol-record" viewBox="0 0 24 24">
+			<path fill="currentColor"
+				d="M3 5a2 2 0 00-2 2v11c0 1.1.9 2 2 2h18a2 2 0 002-2V7a2 2 0 00-2-2H3zm5 5h1.5a1.5 1.5 0 01.5 2.9l1 2.1h-1l-1-1.9V15H8v-5zm4 0h3v1h-2v1h1.6v1H13v1h2v1h-3v-5zm6 0a2 2 0 012 2h-1a1 1 0 00-2 0v1a1 1 0 002 0h1a2 2 0 11-4 0v-1c0-1.1.9-2 2-2zM5.5 11a1.5 1.5 0 110 3 1.5 1.5 0 010-3zM9 11v1h.5a.5.5 0 000-1H9z" />
+		</symbol>
+		<symbol id="illu-money-out" viewBox="0 0 48 48">
+			<path fill="#ffc400" d="M33 35l-9 10-9-10z" />
+			<path fill="#ffc400" d="M21 19h6v20h-6z" />
+			<path fill="#a5d6a7" d="M4 6h39v22H4z" />
+			<path fill="#388e3c" d="M4 28h40V6H4v22zM42 8v18H6V8h36z" />
+			<path fill="#388e3c"
+				d="M12 15a2 2 0 100 4 2 2 0 100-4zm24 0a2 2 0 100 4 2 2 0 100-4zm-12-5a7 7 0 100 14 7 7 0 100-14zm14.8-3a3 3 0 002.2 5 3 3 0 002-.8V7h-4.2zM9.2 7H5v4.2A3 3 0 0010 9a3 3 0 00-.8-2zm0 20A3 3 0 007 22a3 3 0 00-2 .8V27h4.2zM43 27v-4.2a3 3 0 00-5 2.2c0 .8.3 1.5.8 2H43z" />
+		</symbol>
+		<symbol id="illu-calendar" viewBox="0 0 24 24">
+			<path fill="currentColor"
+				d="M6 1v2H5a2 2 0 00-2 2v14c0 1.1.9 2 2 2h14a2 2 0 002-2V5a2 2 0 00-2-2h-1V1h-2v2H8V1H6zM5 8h14v11H5V8z" />
+		</symbol>
+		<symbol id="symbol-arrow" viewBox="0 0 16 16">
+			<path fill="currentColor" fill-opacity="1" d="M4.59 12.34l4.58-4.59-4.58-4.59L6 1.75l6 6-6 6-1.41-1.41z" />
+		</symbol>
+	</svg>
+	<script src="https://apis.google.com/js/platform.js" async defer></script>
+	<script>
+
+		if ("35000001540" !== '') {
+			window.fwSettings = {
+				widget_id: +'35000001540'
+			};
+
+			!function () {
+				if ("function" != typeof window.FreshworksWidget) {
+					var n = function () {
+						n.q.push(arguments)
+					};
+					n.q = [], window.FreshworksWidget = n
+				}
+			}()
+		}
+	</script>
+
+	<script>
+		if ("https://widget.freshworks.com/widgets/35000001540.js" !== '') {
+			const fdesk = document.createElement("script");
+			fdesk.id = 'fdesk';
+			fdesk.async = !0;
+			fdesk.defer = !0;
+			fdesk.src = "https://widget.freshworks.com/widgets/35000001540.js"; document.head.appendChild(fdesk);
+		}
+	</script>
+
+	<!-- <script src="https://www.gstatic.com/firebasejs/3.2.0/firebase.js" async defer onload="initFirebase()"></script> -->
+
+
+	<script>
+		if ("" !== '') {
+			function initFreshChat() {
+				window.fcWidget.init({
+					token: "",
+					host: "https://wchat.in.freshchat.com",
+					config: {
+						// showFAQOnOpen: true,
+						hideFAQ: false,
+					}
+					,
+					locale: window.localStorage.getItem('selectedLanguage') || "en"
+
+				});
+			}
+			function initialize(i, t) {
+				var e; i.getElementById(t) ?
+					initFreshChat() : ((e = i.createElement("script")).id = t, e.async = !0,
+						e.src = "https://wchat.in.freshchat.com/js/widget.js", e.onload = initFreshChat, i.head.appendChild(e))
+			}
+			function initiateCall() { initialize(document, "Freshchat-js-sdk") }
+			window.addEventListener ? window.addEventListener("load", initiateCall, !1) :
+				window.attachEvent("load", initiateCall, !1);
+
+		}
+	</script>
+</body>
+
+</html>

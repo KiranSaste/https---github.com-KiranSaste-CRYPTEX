@@ -28,12 +28,24 @@ def load_user(user_id):
     return User.query.get(int(user_id))
 
 @main.route("/")
-@login_required  # Protects home route, requires login
+#@login_required  # Protects home route, requires login
 def home():
-    with app.app_context():  
+    #with app.app_context():  
         return render_template("index.html")
 
-@main.route("/login", methods=["GET", "POST"])
+@main.route("/market.html")
+def market():
+    return render_template("market.html")
+
+@main.route("/trade.html")
+def trade():
+    return render_template("trade.html")
+
+@main.route("/blog.html")
+def blog():
+    return render_template("blog.html")
+
+#@main.route("/login", methods=["GET", "POST"])
 # main code
 # def register():
 #     form = RegisterForm()
@@ -50,13 +62,24 @@ def home():
 #             flash(f"An error occurred: {str(e)}", "danger")
 #     return render_template("login.html", form=form)
 
-# # Edited code
-@main.route('/register', methods=['GET', 'POST'])
+# # Edited code for testing purpose
+
+from app.forms import RegisterForm  # Ensure RegisterForm is imported
+
+@main.route('/register.html', methods=['GET', 'POST'])
 def register():
-    if request.method == 'POST':
-        username = request.form['username']
-        email = request.form['email']
-        password = request.form['password']
+    form = RegisterForm()  # Create a form instance
+    
+    if form.validate_on_submit():
+        username = form.username.data
+        email = form.email.data
+        password = form.password.data
+        confirm_password = form.confirm_password.data
+
+        # Check if passwords match
+        if password != confirm_password:
+            flash('Passwords do not match.', 'danger')
+            return redirect(url_for('main.register'))
 
         # Check if user already exists
         existing_user = User.query.filter_by(email=email).first()
@@ -72,39 +95,25 @@ def register():
         flash('Registration successful! You can now login.', 'success')
         return redirect(url_for('main.login'))
 
-    return render_template('login.html')
+    return render_template('register.html', form=form)  # Pass form to template
 
-# @main.route("/login", methods=["GET", "POST"])
 
-# def login():
-#     form = LoginForm()
-#     if form.validate_on_submit():
-#         user = User.query.filter_by(email=form.email.data).first()
-#         if user and check_password_hash(user.password, form.password.data):
-#             login_user(user)
-#             return redirect("login.html")
-#         flash("Invalid credentials", "danger")
-#     return render_template("index.html", form=form)
-
-@login_manager.user_loader
-def load_user(user_id):
-    return User.query.get(int(user_id))
-
-@main.route('/login', methods=['GET', 'POST'])
+@main.route('/login.html', methods=['GET', 'POST'])
 def login():
+    form = LoginForm()
     if request.method == 'POST':
-        email = request.form['email']
+        username = request.form['username']
         password = request.form['password']
 
-        user = User.query.filter_by(email=email).first()
+        user = User.query.filter_by(username=username).first()
         if user and user.check_password(password):
             login_user(user)
             flash('Login successful!', 'success')
             return redirect(url_for('main.index'))
         else:
-            flash('Invalid email or password.', 'danger')
+            flash('Invalid username or password.', 'danger')
 
-    return render_template('login.html')
+    return render_template('login.html' , form=form)
 
 @main.route("/logout")
 @login_required

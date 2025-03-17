@@ -1,0 +1,422 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wallet - Cryptex</title>
+    
+    <!-- favicon -->
+    <link rel="shortcut icon" href="../static/images/favicon.svg" type="image/svg+xml">
+    
+    <!-- custom css link -->
+    <link rel="stylesheet" href="../static/css/style.css">
+
+    <!-- google font link -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+    
+    <!-- Ionicons -->
+    <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+    
+    <style>
+        .wallet-section {
+            padding-top: 120px;
+            padding-bottom: 80px;
+        }
+        .wallet-card {
+            background-color: var(--eerie-black-1);
+            border: 1px solid var(--raisin-black);
+            border-radius: var(--radius-12);
+            padding: 20px;
+            margin-bottom: 30px;
+        }
+        .balance-card {
+            background-color: var(--eerie-black-2);
+            padding: 25px;
+            border-radius: var(--radius-12);
+            box-shadow: var(--shadow-1);
+            margin-bottom: 20px;
+        }
+        .wallet-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 20px;
+        }
+        .crypto-list {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        .crypto-list th, 
+        .crypto-list td {
+            padding: 15px;
+            text-align: left;
+            border-bottom: 1px solid var(--raisin-black);
+        }
+        .crypto-list th {
+            font-weight: var(--fw-700);
+            color: var(--white);
+        }
+        .transaction-list {
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+        .transaction-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 12px 0;
+            border-bottom: 1px solid var(--raisin-black);
+        }
+        .transaction-coin {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .transaction-icon {
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: var(--raisin-black);
+        }
+        .transaction-details {
+            display: flex;
+            flex-direction: column;
+        }
+        .transaction-type {
+            font-size: var(--fs-8);
+            border-radius: 50px;
+            padding: 2px 8px;
+            font-weight: var(--fw-700);
+        }
+        .transaction-type.buy {
+            background-color: var(--medium-sea-green);
+            color: var(--white);
+        }
+        .transaction-type.sell {
+            background-color: var(--presian-red);
+            color: var(--white);
+        }
+        .amount-positive {
+            color: var(--medium-sea-green);
+        }
+        .amount-negative {
+            color: var(--presian-red);
+        }
+        .wallet-tabs {
+            display: flex;
+            border-bottom: 1px solid var(--raisin-black);
+            margin-bottom: 20px;
+        }
+        .wallet-tab {
+            padding: 10px 15px;
+            margin-right: 5px;
+            cursor: pointer;
+        }
+        .wallet-tab.active {
+            color: var(--white);
+            border-bottom: 2px solid var(--blue-crayola);
+        }
+        .wallet-modal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            display: none;
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+        }
+        .wallet-modal.show {
+            display: flex;
+        }
+        .modal-content {
+            background-color: var(--eerie-black-1);
+            border: 1px solid var(--raisin-black);
+            border-radius: var(--radius-12);
+            padding: 20px;
+            width: 90%;
+            max-width: 500px;
+        }
+        .modal-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 1px solid var(--raisin-black);
+        }
+        .modal-close {
+            background: none;
+            border: none;
+            color: var(--white);
+            font-size: 24px;
+            cursor: pointer;
+        }
+        
+        @media (min-width: 768px) {
+            .wallet-grid {
+                grid-template-columns: 2fr 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- #HEADER -->
+    <header class="header" data-header>
+        <div class="container">
+            <a href="index.html" class="logo">
+                <img src="../static/images/logo.svg" width="32" height="32" alt="Cryptex logo">
+                Cryptex
+            </a>
+
+            <nav class="navbar" data-navbar>
+                <ul class="navbar-list">
+                    <li class="navbar-item">
+                        <a href="index.html" class="navbar-link" data-nav-link>Homepage</a>
+                    </li>
+                    <li class="navbar-item">
+                        <a href="trade.html" class="navbar-link" data-nav-link>Trade</a>
+                    </li>
+                    <li class="navbar-item">
+                        <a href="market.html" class="navbar-link" data-nav-link>Markets</a>
+                    </li>
+                    <li class="navbar-item">
+                        <a href="sell.html" class="navbar-link" data-nav-link>Sell Crypto</a>
+                    </li>
+                    <li class="navbar-item">
+                        <a href="blog.html" class="navbar-link" data-nav-link>Blog</a>
+                    </li>
+                    <li class="navbar-item">
+                        <a href="bitusd.html" class="navbar-link" data-nav-link>BITUSD</a>
+                    </li>
+                    
+                    <li class="navbar-item">
+                        <a href="{{ url_for('main.logout') }}" class="navbar-link">Logout</a>
+                    </li>
+                    <li class="navbar-item">
+                        <a href="wallet.html" class="navbar-link active">My Wallet</a>
+                    </li>
+                </ul>
+            </nav>
+
+            <button class="nav-toggle-btn" aria-label="Toggle menu" data-nav-toggler>
+                <span class="line line-1"></span>
+                <span class="line line-2"></span>
+                <span class="line line-3"></span>
+            </button>
+
+            <a href="{{ url_for('main.logout') }}" class="btn btn-outline">Logout</a>
+        </div>
+    </header>
+
+    <!-- WALLET SECTION -->
+    <main>
+        <section class="wallet-section">
+            <div class="container">
+                <h1 class="h2">My Wallet</h1>
+                <p>Manage your crypto assets and track your portfolio performance</p>
+
+                <!-- Wallet Summary -->
+                <div class="balance-card">
+                    <div class="wallet-grid">
+                        <div>
+                            <h2 class="h3">Your Balance</h2>
+                            <h3 class="h1">$24,861.21</h3>
+                            <p><span class="amount-positive">+$1,234.56 (4.9%)</span> today</p>
+                            <div style="margin-top: 20px;">
+                                <a href="#" class="btn btn-primary" onclick="showModal('depositModal')">Deposit</a>
+                                <a href="#" class="btn btn-outline" onclick="showModal('withdrawModal')">Withdraw</a>
+                            </div>
+                        </div>
+                        <div>
+                            <h3 class="h3">Asset Allocation</h3>
+                            <div style="height: 150px; width: 150px; margin: 0 auto; background-color: var(--raisin-black); border-radius: 50%;">
+                                <!-- Placeholder for chart -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Portfolio Section -->
+                <div class="wallet-card">
+                    <div class="wallet-tabs">
+                        <div class="wallet-tab active">Portfolio</div>
+                        <div class="wallet-tab">Transactions</div>
+                        <div class="wallet-tab">Settings</div>
+                    </div>
+
+                    <table class="crypto-list">
+                        <thead>
+                            <tr>
+                                <th>Asset</th>
+                                <th>Holdings</th>
+                                <th>Price</th>
+                                <th>Value</th>
+                                <th>24h Change</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>
+                                    <div class="transaction-coin">
+                                        <img src="../static/images/coin-1.svg" width="24" height="24" alt="Bitcoin">
+                                        <div>
+                                            <div>Bitcoin</div>
+                                            <div>BTC</div>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td>0.45 BTC</td>
+                                <td>$46,231.40</td>
+                                <td>$20,804.13</td>
+                                <td class="amount-negative">-2.3%</td>
+                                <td>
+                                    <a href="#" class="btn btn-outline">Trade</a>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <div class="transaction-coin">
+                                        <img src="../static/images/coin-2.svg" width="24" height="24" alt="Ethereum">
+                                        <div>
+                                            <div>Ethereum</div>
+                                            <div>ETH</div>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td>1.25 ETH</td>
+                                <td>$3,245.75</td>
+                                <td>$4,057.19</td>
+                                <td class="amount-positive">+1.8%</td>
+                                <td>
+                                    <a href="#" class="btn btn-outline">Trade</a>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <!-- Recent Transactions -->
+                <div class="wallet-card">
+                    <h3 class="h3">Recent Transactions</h3>
+                    <ul class="transaction-list">
+                        <li class="transaction-item">
+                            <div class="transaction-coin">
+                                <div class="transaction-icon">
+                                    <img src="../static/images/coin-1.svg" width="20" height="20" alt="Bitcoin">
+                                </div>
+                                <div class="transaction-details">
+                                    <div>Bitcoin Purchase</div>
+                                    <div>Mar 15, 2025 • 10:24 AM</div>
+                                </div>
+                            </div>
+                            <div>
+                                <div class="amount-positive">+0.058 BTC</div>
+                                <div>$2,681.42</div>
+                            </div>
+                            <div>
+                                <span class="transaction-type buy">Buy</span>
+                            </div>
+                        </li>
+                        <li class="transaction-item">
+                            <div class="transaction-coin">
+                                <div class="transaction-icon">
+                                    <img src="../static/images/coin-2.svg" width="20" height="20" alt="Ethereum">
+                                </div>
+                                <div class="transaction-details">
+                                    <div>Ethereum Sold</div>
+                                    <div>Mar 13, 2025 • 2:51 PM</div>
+                                </div>
+                            </div>
+                            <div>
+                                <div class="amount-negative">-0.25 ETH</div>
+                                <div>$811.44</div>
+                            </div>
+                            <div>
+                                <span class="transaction-type sell">Sell</span>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Modals -->
+    <div id="depositModal" class="wallet-modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 class="h3">Deposit Funds</h3>
+                <button class="modal-close" onclick="hideModal('depositModal')">&times;</button>
+            </div>
+            <form>
+                <div class="form-group">
+                    <label for="depositAmount">Amount (USD)</label>
+                    <input type="number" id="depositAmount" placeholder="Enter amount">
+                </div>
+                <div class="form-group">
+                    <label for="depositMethod">Payment Method</label>
+                    <select id="depositMethod" class="form-control">
+                        <option>Credit Card</option>
+                        <option>Bank Transfer</option>
+                        <option>PayPal</option>
+                    </select>
+                </div>
+                <button type="submit" class="btn btn-primary">Confirm Deposit</button>
+            </form>
+        </div>
+    </div>
+
+    <div id="withdrawModal" class="wallet-modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 class="h3">Withdraw Funds</h3>
+                <button class="modal-close" onclick="hideModal('withdrawModal')">&times;</button>
+            </div>
+            <form>
+                <div class="form-group">
+                    <label for="withdrawAmount">Amount (USD)</label>
+                    <input type="number" id="withdrawAmount" placeholder="Enter amount">
+                </div>
+                <div class="form-group">
+                    <label for="withdrawMethod">Withdrawal Method</label>
+                    <select id="withdrawMethod" class="form-control">
+                        <option>Bank Account</option>
+                        <option>PayPal</option>
+                        <option>Crypto Wallet</option>
+                    </select>
+                </div>
+                <button type="submit" class="btn btn-primary">Confirm Withdrawal</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Custom JS -->
+    <script src="../static/js/script.js"></script>
+    <script>
+        function showModal(modalId) {
+            document.getElementById(modalId).classList.add('show');
+        }
+        
+        function hideModal(modalId) {
+            document.getElementById(modalId).classList.remove('show');
+        }
+        
+        // Close modals when clicking outside
+        window.onclick = function(event) {
+            if (event.target.classList.contains('wallet-modal')) {
+                event.target.classList.remove('show');
+            }
+        }
+    </script>
+</body>
+</html> 

@@ -56,18 +56,44 @@
             <div class="card p-4">
                 <h3 class="text-center">Login to Cryptex</h3>
 
-                <form method="POST" action="{{ url_for('main.login') }}">
-                    {{ form.hidden_tag() }} <!-- CSRF Protection -->
+                <!-- Flash Messages -->
+                {% with messages = get_flashed_messages(with_categories=true) %}
+                    {% if messages %}
+                        {% for category, message in messages %}
+                            <div class="alert alert-{{ category }} alert-dismissible fade show mt-3">
+                                {{ message }}
+                                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                            </div>
+                        {% endfor %}
+                    {% endif %}
+                {% endwith %}
 
-                    <div class="form-group">
-                        {{ form.username.label }}  
-                        {{ form.username(class="form-control") }}
+                <!-- Test Credentials Card -->
+                <div class="alert alert-info mb-3 border border-primary">
+                    <strong>Demo Mode:</strong> Use these credentials to log in
+                    <hr class="my-2">
+                    <div class="d-flex justify-content-between">
+                        <div><strong>Username:</strong> {{ test_username or 'test' }}</div>
+                        <div><strong>Password:</strong> {{ test_password or 'password123' }}</div>
                     </div>
-                    <div class="form-group">
-                        {{ form.password.label }}  
-                        {{ form.password(class="form-control") }}
+                </div>
+
+                <form method="POST" action="{{ url_for('main.login') }}">
+                    <!-- Simple form without complex Jinja -->
+                    <div class="form-group mb-3">
+                        <label class="form-label">Username</label>
+                        <input type="text" name="username" class="form-control" placeholder="Enter username">
+                        {% if username_error %}
+                            <span class="text-danger">{{ username_error }}</span>
+                        {% endif %}
                     </div>
-                    
+                    <div class="form-group mb-3">
+                        <label class="form-label">Password</label>
+                        <input type="password" name="password" class="form-control" placeholder="Enter password">
+                        {% if password_error %}
+                            <span class="text-danger">{{ password_error }}</span>
+                        {% endif %}
+                    </div>
                     <button type="submit" class="btn btn-primary">Login</button>
                 </form>
 

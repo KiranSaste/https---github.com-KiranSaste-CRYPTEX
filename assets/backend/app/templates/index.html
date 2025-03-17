@@ -63,13 +63,22 @@
                         
                     </li>
 
+                    {% if 'user' in session %}
                     <li class="navbar-item">
-                        <a href="login.html" class="navbar-link">Login</a>    <!-- FIXED LINK for login page-->
+                        <a href="{{ url_for('main.logout') }}" class="navbar-link">Logout</a>
+                    </li>
+                    <li class="navbar-item">
+                        <a href="wallet.html" class="navbar-link">My Wallet</a>
+                    </li>
+                    {% else %}
+                    <li class="navbar-item">
+                        <a href="login.html" class="navbar-link">Login</a>
                     </li>
 
                     <li class="navbar-item">
-                        <a href="register.html" class="navbar-link">Sign-up</a>    <!-- FIXED LINK for login page-->
+                        <a href="register.html" class="navbar-link">Sign-up</a>
                     </li>
+                    {% endif %}
                 </ul>
             </nav>
 
@@ -80,7 +89,11 @@
                 <span class="line line-3"></span>
             </button>
             <!-- for outline hover -->
-            <a href="#" class="btn btn-outline">Wallet</a> 
+            {% if 'user' in session %}
+            <a href="wallet.html" class="btn btn-outline">Wallet</a>
+            {% else %}
+            <a href="login.html" class="btn btn-outline">Login</a>
+            {% endif %}
             <!-- for primary animated type shin hover  -->
             <!-- <a href="#" class="btn btn-primary">Wallet</a> -->
         </div>

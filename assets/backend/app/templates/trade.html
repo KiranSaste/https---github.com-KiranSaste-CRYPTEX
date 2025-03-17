@@ -8,16 +8,74 @@
     <script src="../static/scripts/trade.js" defer></script>
 </head>
 <body>
-    <header>
-        <nav>
-            <ul>
-                <li><a href="index.html">Home</a></li>
-                <li><a href="market.html">Market</a></li>
-                <li><a href="trade.html" class="active">Trade</a></li>
-                <li><a href="wallet.html">Wallet</a></li>
-                <li><a href="profile.html">Profile</a></li>
-            </ul>
-        </nav>
+    <header class="header" data-header>
+        <div class="container">
+            <a href="index.html" class="logo">
+                <img src="../static/images/logo.svg" width="32" height="32" alt="Cryptex logo">
+                Cryptex
+            </a>
+
+            <nav class="navbar " data-navbar>
+                <ul class="navbar-list">
+                    <li class="navbar-item ">
+                        <a href="index.html"class="navbar-link " data-nav-link >Homepage</a>
+                    </li>
+
+                    <li class="navbar-item">
+                        <a href="#"class="navbar-link active" data-nav-link>Trade</a>
+                    </li>
+
+                    
+
+                    <li class="navbar-item">
+                        <a href="market.html"class="navbar-link" data-nav-link>Markets</a>
+                    </li>
+
+                    <li class="navbar-item">
+                        <a href="sell.html"class="navbar-link" data-nav-link>Sell Crypto</a>
+                    </li>
+
+                    <li class="navbar-item">
+                        <a href="blog.html"class="navbar-link" data-nav-link >Blog</a>
+                        
+                    </li>
+
+                    <li class="navbar-item">
+                        <a href="bitusd.html"class="navbar-link" data-nav-link >BITUSD</a>
+                        
+                    </li>
+
+                    {% if 'user' in session %}
+                    <li class="navbar-item">
+                        <a href="{{ url_for('main.logout') }}" class="navbar-link">Logout</a>
+                    </li>
+                    <li class="navbar-item">
+                        <a href="wallet.html" class="navbar-link">My Wallet</a>
+                    </li>
+                    {% else %}
+                    <li class="navbar-item">
+                        <a href="login.html" class="navbar-link">Login</a>
+                    </li>
+
+                    <li class="navbar-item">
+                        <a href="register.html" class="navbar-link">Sign-up</a>
+                    </li>
+                    {% endif %}
+                </ul>
+            </nav>
+
+            <button class="nav-toggle-btn " aria-lable="Toggle menu" data-nav-toggler>
+                <span class="line line-1"></span>
+                <span class="line line-2"></span>
+                <span class="line line-3"></span>
+            </button>
+            
+            {% if 'user' in session %}
+            <a href="wallet.html" class="btn btn-outline">Wallet</a>
+            {% else %}
+            <a href="login.html" class="btn btn-outline">Login</a>
+            {% endif %}
+        </div>
     </header>
     
     <main>

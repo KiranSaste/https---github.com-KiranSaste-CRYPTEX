@@ -112,6 +112,20 @@ def wallet():
 def blog():
     return render_template('blog.html')
 
+@main.route('/sell.html')
+def sell():
+    if 'user' not in session:
+        flash('Please log in to view this page', 'warning')
+        return redirect(url_for('main.login'))
+    return render_template('sell.html')
+
+@main.route('/bitusd.html')
+def bitusd():
+    if 'user' not in session:
+        flash('Please log in to view this page', 'warning')
+        return redirect(url_for('main.login'))
+    return render_template('bitusd.html')
+
 # Error handlers
 @app.errorhandler(404)
 def page_not_found(e):

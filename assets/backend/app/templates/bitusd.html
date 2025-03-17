@@ -3,198 +3,140 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>BITUSD - Cryptex</title>
+    <title>BITUSD | Cryptex</title>
     
     <!-- favicon -->
-    <link rel="shortcut icon" href="../static/images/favicon.svg" type="image/svg+xml">
+    <link rel="shortcut icon" href="{{ url_for('static', filename='images/favicon.svg') }}" type="image/svg+xml">
     
     <!-- custom css link -->
-    <link rel="stylesheet" href="../static/css/style.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
 
     <!-- google font link -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
-    
-    <!-- Ionicons -->
-    <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
-    <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
 </head>
 <body>
     <!-- #HEADER -->
     <header class="header" data-header>
         <div class="container">
-            <a href="index.html" class="logo">
-                <img src="../static/images/logo.svg" width="32" height="32" alt="Cryptex logo">
+            <a href="{{ url_for('main.home') }}" class="logo">
+                <img src="{{ url_for('static', filename='images/logo.svg') }}" width="32" height="32" alt="Cryptex logo">
                 Cryptex
             </a>
 
             <nav class="navbar" data-navbar>
                 <ul class="navbar-list">
                     <li class="navbar-item">
-                        <a href="index.html" class="navbar-link" data-nav-link>Homepage</a>
+                        <a href="{{ url_for('main.home') }}" class="navbar-link" data-nav-link>Homepage</a>
                     </li>
                     <li class="navbar-item">
-                        <a href="trade.html" class="navbar-link" data-nav-link>Trade</a>
+                        <a href="{{ url_for('main.trade') }}" class="navbar-link" data-nav-link>Trade</a>
                     </li>
                     <li class="navbar-item">
-                        <a href="market.html" class="navbar-link" data-nav-link>Markets</a>
+                        <a href="{{ url_for('main.market') }}" class="navbar-link" data-nav-link>Markets</a>
                     </li>
                     <li class="navbar-item">
-                        <a href="sell.html" class="navbar-link" data-nav-link>Sell Crypto</a>
+                        <a href="{{ url_for('main.sell') }}" class="navbar-link" data-nav-link>Sell Crypto</a>
                     </li>
                     <li class="navbar-item">
-                        <a href="blog.html" class="navbar-link" data-nav-link>Blog</a>
+                        <a href="{{ url_for('main.blog') }}" class="navbar-link" data-nav-link>Blog</a>
                     </li>
                     <li class="navbar-item">
-                        <a href="bitusd.html" class="navbar-link active" data-nav-link>BITUSD</a>
-                    </li>
-
-                    {% if 'user' in session %}
-                    <li class="navbar-item">
-                        <a href="{{ url_for('main.logout') }}" class="navbar-link">Logout</a>
+                        <a href="{{ url_for('main.bitusd') }}" class="navbar-link active" data-nav-link>BITUSD</a>
                     </li>
                     <li class="navbar-item">
-                        <a href="wallet.html" class="navbar-link">My Wallet</a>
+                        <a href="{{ url_for('main.wallet') }}" class="navbar-link" data-nav-link>Wallet</a>
                     </li>
-                    {% else %}
-                    <li class="navbar-item">
-                        <a href="login.html" class="navbar-link">Login</a>
-                    </li>
-                    <li class="navbar-item">
-                        <a href="register.html" class="navbar-link">Sign-up</a>
-                    </li>
-                    {% endif %}
                 </ul>
             </nav>
 
-            <button class="nav-toggle-btn" aria-label="Toggle menu" data-nav-toggler>
-                <span class="line line-1"></span>
-                <span class="line line-2"></span>
-                <span class="line line-3"></span>
-            </button>
-            
-            {% if 'user' in session %}
-            <a href="wallet.html" class="btn btn-outline">Wallet</a>
-            {% else %}
-            <a href="login.html" class="btn btn-outline">Login</a>
-            {% endif %}
+            <div class="header-actions">
+                {% if 'user' in session %}
+                    <a href="{{ url_for('main.logout') }}" class="btn-primary">Logout</a>
+                {% else %}
+                    <a href="{{ url_for('main.login') }}" class="btn-primary">Login</a>
+                {% endif %}
+            </div>
         </div>
     </header>
 
-    <!-- MAIN CONTENT -->
     <main>
-        <section class="section" aria-label="bitusd">
+        <section class="section bitusd-section">
             <div class="container">
-                <h2 class="h1">BITUSD</h2>
-                <p class="section-text">
-                    Track BITUSD exchange rates and market performance. Get real-time data and insights into one of the most stable cryptocurrency pairs.
-                </p>
+                <h2 class="h2 section-title">BITUSD Trading</h2>
                 
-                <div style="background-color: var(--eerie-black-2); padding: 30px; border-radius: var(--radius-12); margin-top: 30px;">
-                    <p style="text-align: center; margin-bottom: 20px;">
-                        This page is currently under development.
-                    </p>
-                    <div style="display: flex; justify-content: center;">
-                        <a href="index.html" class="btn btn-primary">Return to Homepage</a>
+                <div class="bitusd-content">
+                    <div class="market-info">
+                        <h3>Current BITUSD Market Information</h3>
+                        <div class="price-info">
+                            <div class="info-item">
+                                <span class="label">Current Price:</span>
+                                <span class="value">$1.00</span>
+                            </div>
+                            <div class="info-item">
+                                <span class="label">24h Volume:</span>
+                                <span class="value">$24,567,890</span>
+                            </div>
+                            <div class="info-item">
+                                <span class="label">Market Cap:</span>
+                                <span class="value">$100,000,000</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="trading-section">
+                        <h3>Trade BITUSD</h3>
+                        <div class="trading-options">
+                            <div class="buy-section">
+                                <h4>Buy BITUSD</h4>
+                                <form class="trade-form">
+                                    <div class="form-group">
+                                        <label for="buy-amount">Amount (BITUSD)</label>
+                                        <input type="number" id="buy-amount" name="amount" step="0.01" min="0" required>
+                                    </div>
+                                    <button type="submit" class="btn-primary">Buy BITUSD</button>
+                                </form>
+                            </div>
+
+                            <div class="sell-section">
+                                <h4>Sell BITUSD</h4>
+                                <form class="trade-form">
+                                    <div class="form-group">
+                                        <label for="sell-amount">Amount (BITUSD)</label>
+                                        <input type="number" id="sell-amount" name="amount" step="0.01" min="0" required>
+                                    </div>
+                                    <button type="submit" class="btn-primary">Sell BITUSD</button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="about-bitusd">
+                        <h3>About BITUSD</h3>
+                        <p>BITUSD is a stablecoin pegged to the US Dollar, providing a stable digital asset for trading and storing value. Each BITUSD is backed by cryptocurrency collateral, ensuring its stability and reliability in the digital asset ecosystem.</p>
+                        
+                        <div class="features">
+                            <h4>Key Features:</h4>
+                            <ul>
+                                <li>1:1 USD Peg</li>
+                                <li>Fully Collateralized</li>
+                                <li>Instant Transfers</li>
+                                <li>Low Transaction Fees</li>
+                                <li>Smart Contract Security</li>
+                            </ul>
+                        </div>
                     </div>
                 </div>
             </div>
         </section>
     </main>
 
-    <!-- FOOTER -->
-    <footer class="footer">
-        <div class="footer-top" data-section>
-            <div class="container">
-                <div class="footer-brand">
-                    <a href="#" class="logo">
-                        <img src="../static/images/logo.svg" width="50" height="50" alt="Cryptex logo">
-                        Cryptex
-                    </a>
-
-                    <h2 class="footer-title">Let's talk! 🤙 </h2>
-                    
-                    <a href="tel:+917387582247" class="footer-contact-link">+917387582247</a>  
-                    
-                    <a href="mailto:hello.cryptex@gmail.com" class="footer-contact-link">hello.cryptex@gmail.com</a>  
-                    
-                    <address class="footer-contact-link">
-                        Cecilia Chapman 711-2880 Nulla St. Mankato Mississippi 96522
-                    </address>
-                </div>
-                
-                <ul class="footer-list">
-                    <li>
-                        <p class="footer-list-title">Products</p>
-                    </li>
-                    <li>
-                        <a href="#" class="footer-link">Spot</a>
-                    </li>
-                    <li>
-                        <a href="#" class="footer-link">Inverse Perpetual</a>
-                    </li>
-                    <li>
-                        <a href="#" class="footer-link">USDT Perpetual</a>
-                    </li>
-                    <li>
-                        <a href="#" class="footer-link">Exchange</a>
-                    </li>
-                    <li>
-                        <a href="#" class="footer-link">Launchpad</a>
-                    </li>
-                </ul>
-
-                <ul class="footer-list">
-                    <li>
-                        <p class="footer-list-title">Services</p>
-                    </li>
-                    <li>
-                        <a href="#" class="footer-link">Buy Crypto</a>
-                    </li>
-                    <li>
-                        <a href="#" class="footer-link">Markets</a>
-                    </li>
-                    <li>
-                        <a href="#" class="footer-link">Trading Fee</a>
-                    </li>
-                </ul>
-            </div>
-        </div>
-
-        <div class="footer-bottom">
-            <div class="container">
-                <p class="copyright">
-                    &copy; 2025 Cryptex All Rights Reserved
-                </p>
-
-                <ul class="social-list">
-                    <li>
-                        <a href="#" class="social-link">
-                            <ion-icon name="logo-facebook"></ion-icon>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="#" class="social-link">
-                            <ion-icon name="logo-twitter"></ion-icon>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="#" class="social-link">
-                            <ion-icon name="logo-instagram"></ion-icon>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="#" class="social-link">
-                            <ion-icon name="logo-linkedin"></ion-icon>
-                        </a>
-                    </li>
-                </ul>
-            </div>
-        </div>
-    </footer>
-
-    <!-- Custom JS -->
-    <script src="../static/js/script.js"></script>
+    <!-- custom js link -->
+    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+    
+    <!-- ionicon link -->
+    <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
 </body>
 </html>

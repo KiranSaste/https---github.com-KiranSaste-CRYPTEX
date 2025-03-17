@@ -5,116 +5,130 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login | Cryptex</title>
     
-    <!-- Bootstrap CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- favicon -->
+    <link rel="shortcut icon" href="{{ url_for('static', filename='images/favicon.svg') }}" type="image/svg+xml">
     
-    <!-- Custom CSS -->
+    <!-- custom css link -->
     <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
 
-    <style>
-        body {
-            background-color: #0d1117;
-            color: white;
-        }
-        .card {
-            background-color: rgb(232, 218, 218);
-            border-radius: 10px;
-            box-shadow: 0px 0px 15px rgba(255, 255, 255, 0.1);
-        }
-        .form-control {
-            background-color: #8d9095;
-            color: white;
-            border: none;
-        }
-        .form-control:focus {
-            background-color: #30363d;
-            color: white;
-            border-color: #58a6ff;
-        }
-        .btn-custom {
-            background-color: #0d6efd;
-            color: white;
-            border-radius: 5px;
-        }
-        .btn-custom:hover {
-            background-color: #0b5ed7;
-        }
-    </style>
+    <!-- google font link -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+    
+    <!-- Ionicons -->
+    <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
 </head>
 <body>
-
-    <!-- Navbar -->
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <!-- #HEADER -->
+    <header class="header" data-header>
         <div class="container">
-            <a class="navbar-brand" href="{{ url_for('main.home') }}">Cryptex</a>
+            <a href="{{ url_for('main.home') }}" class="logo">
+                <img src="{{ url_for('static', filename='images/logo.svg') }}" width="32" height="32" alt="Cryptex logo">
+                Cryptex
+            </a>
+
+            <nav class="navbar" data-navbar>
+                <ul class="navbar-list">
+                    <li class="navbar-item">
+                        <a href="{{ url_for('main.home') }}" class="navbar-link" data-nav-link>Homepage</a>
+                    </li>
+                    <li class="navbar-item">
+                        <a href="{{ url_for('main.trade') }}" class="navbar-link" data-nav-link>Trade</a>
+                    </li>
+                    <li class="navbar-item">
+                        <a href="{{ url_for('main.market') }}" class="navbar-link" data-nav-link>Markets</a>
+                    </li>
+                    <li class="navbar-item">
+                        <a href="{{ url_for('main.sell') }}" class="navbar-link" data-nav-link>Sell Crypto</a>
+                    </li>
+                    <li class="navbar-item">
+                        <a href="{{ url_for('main.blog') }}" class="navbar-link" data-nav-link>Blog</a>
+                    </li>
+                    <li class="navbar-item">
+                        <a href="{{ url_for('main.bitusd') }}" class="navbar-link" data-nav-link>BITUSD</a>
+                    </li>
+                </ul>
+            </nav>
+
+            <button class="nav-toggle-btn" aria-label="Toggle menu" data-nav-toggler>
+                <span class="line line-1"></span>
+                <span class="line line-2"></span>
+                <span class="line line-3"></span>
+            </button>
+
+            <a href="{{ url_for('main.register') }}" class="btn btn-outline">Sign-up</a>
         </div>
-    </nav>
+    </header>
 
-    <!-- Login Form -->
-    <div class="container d-flex justify-content-center align-items-center vh-100">
-        <div class="col-md-6">
-            <div class="card p-4">
-                <h3 class="text-center">Login to Cryptex</h3>
+    <main>
+        <section class="section">
+            <div class="container">
+                <div class="login-container">
+                    <div class="login-card">
+                        <h2 class="h2">Login to Cryptex</h2>
 
-                <!-- Flash Messages -->
-                {% with messages = get_flashed_messages(with_categories=true) %}
-                    {% if messages %}
-                        {% for category, message in messages %}
-                            <div class="alert alert-{{ category }} alert-dismissible fade show mt-3">
-                                {{ message }}
-                                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                        <!-- Flash Messages -->
+                        {% with messages = get_flashed_messages(with_categories=true) %}
+                            {% if messages %}
+                                {% for category, message in messages %}
+                                    <div class="alert alert-{{ category }}">
+                                        {{ message }}
+                                    </div>
+                                {% endfor %}
+                            {% endif %}
+                        {% endwith %}
+
+                        <!-- Test Credentials -->
+                        <div class="test-credentials">
+                            <h3 class="h3">Demo Mode</h3>
+                            <p>Use these credentials to log in:</p>
+                            <div class="credentials-info">
+                                <div><strong>Username:</strong> {{ test_username or 'test' }}</div>
+                                <div><strong>Password:</strong> {{ test_password or 'password123' }}</div>
                             </div>
-                        {% endfor %}
-                    {% endif %}
-                {% endwith %}
+                        </div>
 
-                <!-- Test Credentials Card -->
-                <div class="alert alert-info mb-3 border border-primary">
-                    <strong>Demo Mode:</strong> Use these credentials to log in
-                    <hr class="my-2">
-                    <div class="d-flex justify-content-between">
-                        <div><strong>Username:</strong> {{ test_username or 'test' }}</div>
-                        <div><strong>Password:</strong> {{ test_password or 'password123' }}</div>
+                        <form method="POST" action="{{ url_for('main.login') }}" class="login-form">
+                            <div class="form-group">
+                                <label for="username">Username</label>
+                                <input type="text" id="username" name="username" placeholder="Enter username">
+                                {% if username_error %}
+                                    <span class="error-message">{{ username_error }}</span>
+                                {% endif %}
+                            </div>
+                            <div class="form-group">
+                                <label for="password">Password</label>
+                                <input type="password" id="password" name="password" placeholder="Enter password">
+                                {% if password_error %}
+                                    <span class="error-message">{{ password_error }}</span>
+                                {% endif %}
+                            </div>
+                            <button type="submit" class="btn btn-primary">Login</button>
+                        </form>
+
+                        <!-- Social Login -->
+                        <div class="social-login">
+                            <p>or login with social platforms</p>
+                            <div class="social-buttons">
+                                <a href="#" class="btn btn-outline"><ion-icon name="logo-google"></ion-icon></a>
+                                <a href="#" class="btn btn-outline"><ion-icon name="logo-facebook"></ion-icon></a>
+                                <a href="#" class="btn btn-outline"><ion-icon name="logo-twitter"></ion-icon></a>
+                            </div>
+                        </div>
+
+                        <!-- Create Account -->
+                        <p class="create-account">
+                            Don't have an account? <a href="{{ url_for('main.register') }}">Create account</a>
+                        </p>
                     </div>
                 </div>
-
-                <form method="POST" action="{{ url_for('main.login') }}">
-                    <!-- Simple form without complex Jinja -->
-                    <div class="form-group mb-3">
-                        <label class="form-label">Username</label>
-                        <input type="text" name="username" class="form-control" placeholder="Enter username">
-                        {% if username_error %}
-                            <span class="text-danger">{{ username_error }}</span>
-                        {% endif %}
-                    </div>
-                    <div class="form-group mb-3">
-                        <label class="form-label">Password</label>
-                        <input type="password" name="password" class="form-control" placeholder="Enter password">
-                        {% if password_error %}
-                            <span class="text-danger">{{ password_error }}</span>
-                        {% endif %}
-                    </div>
-                    <button type="submit" class="btn btn-primary">Login</button>
-                </form>
-
-                <!-- Social Login -->
-                <p class="mt-3 text-center">or login with social platforms</p>
-                <div class="d-flex justify-content-center">
-                    <a href="#" class="btn btn-outline-light btn-sm mx-1"><i class='bx bxl-google'></i></a>
-                    <a href="#" class="btn btn-outline-light btn-sm mx-1"><i class='bx bxl-facebook'></i></a>
-                    <a href="#" class="btn btn-outline-light btn-sm mx-1"><i class='bx bxl-twitter'></i></a>
-                </div>
-
-                <!-- Create Account -->
-                <p class="mt-3 text-center">
-                    Don't have an account? <a href="{{ url_for('main.register') }}" class="text-primary">Create account</a>
-                </p>
             </div>
-        </div>
-    </div>
+        </section>
+    </main>
 
-    <!-- Bootstrap JS -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-
+    <!-- Custom JS -->
+    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
 </body>
 </html>

@@ -6,10 +6,10 @@
     <title>Register | Cryptex</title>
     
     <!-- favicon -->
-    <link rel="shortcut icon" href="../static/images/favicon.svg" type="image/svg+xml">
+    <link rel="shortcut icon" href="{{ url_for('static', filename='images/favicon.svg') }}" type="image/svg+xml">
     
     <!-- custom css link -->
-    <link rel="stylesheet" href="../static/css/style.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
 
     <!-- google font link -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -70,30 +70,30 @@
     <!-- #HEADER -->
     <header class="header" data-header>
         <div class="container">
-            <a href="index.html" class="logo">
-                <img src="../static/images/logo.svg" width="32" height="32" alt="Cryptex logo">
+            <a href="{{ url_for('main.home') }}" class="logo">
+                <img src="{{ url_for('static', filename='images/logo.svg') }}" width="32" height="32" alt="Cryptex logo">
                 Cryptex
             </a>
 
             <nav class="navbar" data-navbar>
                 <ul class="navbar-list">
                     <li class="navbar-item">
-                        <a href="index.html" class="navbar-link">Homepage</a>
+                        <a href="{{ url_for('main.home') }}" class="navbar-link" data-nav-link>Homepage</a>
                     </li>
                     <li class="navbar-item">
-                        <a href="trade.html" class="navbar-link">Trade</a>
+                        <a href="{{ url_for('main.trade') }}" class="navbar-link" data-nav-link>Trade</a>
                     </li>
                     <li class="navbar-item">
-                        <a href="market.html" class="navbar-link">Markets</a>
+                        <a href="{{ url_for('main.market') }}" class="navbar-link" data-nav-link>Markets</a>
                     </li>
                     <li class="navbar-item">
-                        <a href="sell.html" class="navbar-link">Sell Crypto</a>
+                        <a href="{{ url_for('main.sell') }}" class="navbar-link" data-nav-link>Sell Crypto</a>
                     </li>
                     <li class="navbar-item">
-                        <a href="blog.html" class="navbar-link">Blog</a>
+                        <a href="{{ url_for('main.blog') }}" class="navbar-link" data-nav-link>Blog</a>
                     </li>
                     <li class="navbar-item">
-                        <a href="bitusd.html" class="navbar-link">BITUSD</a>
+                        <a href="{{ url_for('main.bitusd') }}" class="navbar-link" data-nav-link>BITUSD</a>
                     </li>
                 </ul>
             </nav>
@@ -104,7 +104,7 @@
                 <span class="line line-3"></span>
             </button>
 
-            <a href="login.html" class="btn btn-outline">Login</a>
+            <a href="{{ url_for('main.login') }}" class="btn btn-outline">Login</a>
         </div>
     </header>
 
@@ -158,7 +158,7 @@
                         </form>
 
                         <!-- Already have an account -->
-                        <p style="margin-top: 20px; text-align: center;">
+                        <p class="create-account">
                             Already have an account? <a href="{{ url_for('main.login') }}" class="register-link">Login here</a>
                         </p>
                     </div>
@@ -170,6 +170,6 @@
     <!-- Footer will be added here if needed -->
 
     <!-- Custom JS -->
-    <script src="../static/js/script.js"></script>
+    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
 </body>
 </html>
